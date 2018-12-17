@@ -22,7 +22,7 @@ contract ProofOfExistence {
         emit ProofSet(proof, block.number);
     }
 
-    function hasProof(bytes32 proof) public view returns (uint) {
+    function getBlockNumber(bytes32 proof) public view returns (uint) {
         return proofs[proof];
     }
 }
