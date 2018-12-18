@@ -15,7 +15,7 @@ contract ProofOfExistence {
     mapping(bytes32 => uint) public proofs;
 
     function setProof(bytes32 proof) public {
-        require(proofs[proof] == 0);
+        require(proofs[proof] == 0, "can't overwrite previous hash");
 
         proofs[proof] = block.number;
 
@@ -24,5 +24,9 @@ contract ProofOfExistence {
 
     function getBlockNumber(bytes32 proof) public view returns (uint) {
         return proofs[proof];
+    }
+
+    function hasProof(bytes32 proof) public view returns (bool) {
+        return proofs[proof] != 0;
     }
 }

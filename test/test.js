@@ -12,6 +12,14 @@ contract('ProofOfExistence', function (accounts) {
         });
     });
 
+    it("non existing hash should return false on hasProof", function () {
+        return ProofOfExistence.deployed().then(function (instance) {
+            return instance.hasProof.call("fcf52912003e5d702d22596df8a65e5da493a58ea20f05edb3ab71f1ead6f550");
+        }).then(function (hasProof) {
+            assert.equal(hasProof, false);
+        });
+    });
+
 
     it("should return non zero blocknumber", function () {
         let poe;
@@ -26,7 +34,7 @@ contract('ProofOfExistence', function (accounts) {
             return poe.getBlockNumber.call('fcf52912003e5d702d22596df8a65e5da493a58ea20f05edb3ab71f1ead6f551');
         }).then(function (blockNumber) {
             assert.equal(beforeNumber.toNumber(), 0, "Before setProof the block number is 0");
-            assert.equal(blockNumber.toNumber(), 5, "After setProof the block number is 5");
+            assert.equal(blockNumber.toNumber() === 0, false, "After setProof the block number is not 0");
         });
     });
 
