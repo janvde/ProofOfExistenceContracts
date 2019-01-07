@@ -13,8 +13,6 @@ Contracts to save the hash of a file and keep track of the block it's added to.
 
 ### Run tests
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ```bash
 truffle test test/test.js
 ```
